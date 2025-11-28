@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\amina\\OneDrive\\Documents\\GitHub\\CMPS102-Logic-Circuit-Project\\",
+  "WorkspaceRootPath": "C:\\Users\\Dell\\OneDrive\\Documents\\GitHub\\CMPS102-Logic-Circuit-Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AA10A871-5060-4858-9CB5-CAE63E0A749B}|graphics_prj.vcxproj|C:\\Users\\amina\\OneDrive\\Documents\\GitHub\\CMPS102-Logic-Circuit-Project\\Defs.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{AA10A871-5060-4858-9CB5-CAE63E0A749B}|graphics_prj.vcxproj|C:\\Users\\Dell\\OneDrive\\Documents\\GitHub\\CMPS102-Logic-Circuit-Project\\Defs.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{AA10A871-5060-4858-9CB5-CAE63E0A749B}|graphics_prj.vcxproj|solutionrelative:Defs.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -20,11 +20,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Defs.H",
-              "DocumentMoniker": "C:\\Users\\amina\\OneDrive\\Documents\\GitHub\\CMPS102-Logic-Circuit-Project\\Defs.H",
+              "DocumentMoniker": "C:\\Users\\Dell\\OneDrive\\Documents\\GitHub\\CMPS102-Logic-Circuit-Project\\Defs.H",
               "RelativeDocumentMoniker": "Defs.H",
-              "ToolTip": "C:\\Users\\amina\\OneDrive\\Documents\\GitHub\\CMPS102-Logic-Circuit-Project\\Defs.H",
+              "ToolTip": "C:\\Users\\Dell\\OneDrive\\Documents\\GitHub\\CMPS102-Logic-Circuit-Project\\Defs.H",
               "RelativeToolTip": "Defs.H",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-11-28T22:08:35.566Z",
               "EditorCaption": ""
