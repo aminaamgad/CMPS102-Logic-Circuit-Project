@@ -3,6 +3,8 @@
 #include <sstream>
 #include <cmath>
 
+// amina waz here
+
 #include "ApplicationManager.h"
 
 int main()
