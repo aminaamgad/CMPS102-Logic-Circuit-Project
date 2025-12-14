@@ -2,47 +2,52 @@
 #define APPLICATION_MANAGER_H
 
 #include "Defs.h"
-#include "GUI\Output.h"
-#include "GUI\Input.h"
-#include "Actions\Action.h"
-#include "Components\Component.h"
+#include "GUI/Output.h"
+#include "GUI/Input.h"
+#include "Actions/Action.h"
+#include "Components/Component.h"
 
-//Main class that manages everything in the application.
 class ApplicationManager
 {
-
-	enum { MaxCompCount = 200 };	//Max no of Components	
+	enum { MaxCompCount = 200 };
 
 private:
-	int CompCount;		//Actual number of Components
-	Component* CompList[MaxCompCount];	//List of all Components (Array of pointers)
+	int CompCount;
+	Component* CompList[MaxCompCount];
 
-	Output* OutputInterface; //pointer to the Output Clase Interface
-	Input* InputInterface; //pointer to the Input Clase Interface
+	Output* OutputInterface;
+	Input* InputInterface;
 
+	// ===== Clipboard system =====
+	Component* Clipboard;     // copied or cut component
+	bool IsClip_Cut;          // true if cut, false if copy
 
 public:
+	ApplicationManager();
 
-
-public:	
-	ApplicationManager(); //constructor
-
-	//Reads the required action from the user and returns the corresponding action type
+	// Core functions
 	ActionType GetUserAction();
-	
-	//Creates an action and executes it
 	void ExecuteAction(ActionType);
-	
-	void UpdateInterface();	//Redraws all the drawing window
+	void UpdateInterface();
 
-	//Gets a pointer to Input / Output Object
 	Output* GetOutput();
 	Input* GetInput();
 
-	//Adds a new component to the list of components
+	// Component management
 	void AddComponent(Component* pComp);
 
-	//destructor
+	// ===== Clipboard functions =====
+	void SetClipboard(Component* pComp, bool IsCut);
+	Component* GetClipboard() const;
+	bool GetIsCut() const;
+	void Uncut();
+	void ClearClipboard();
+
+	void RemoveComponent(Component* pComp);
+
+	// Selection (implemented by teammate)
+	Component* GetSelected();
+
 	~ApplicationManager();
 };
 

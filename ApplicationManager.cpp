@@ -1,85 +1,135 @@
 #include "ApplicationManager.h"
-#include "Actions\AddANDgate2.h"
-
+#include "Actions/AddANDgate2.h"
 
 ApplicationManager::ApplicationManager()
 {
 	CompCount = 0;
 
-	for(int i=0; i<MaxCompCount; i++)
-		CompList[i] = NULL;
+	for (int i = 0; i < MaxCompCount; i++)
+		CompList[i] = nullptr;
 
-	//Creates the Input / Output Objects & Initialize the GUI
+	Clipb
+		oard = nullptr;
+	IsClip_Cut = false;
+
 	OutputInterface = new Output();
 	InputInterface = OutputInterface->CreateInput();
-}
-////////////////////////////////////////////////////////////////////
-void ApplicationManager::AddComponent(Component* pComp)
-{
-	CompList[CompCount++] = pComp;		
 }
 ////////////////////////////////////////////////////////////////////
 
 ActionType ApplicationManager::GetUserAction()
 {
-	//Call input to get what action is reuired from the user
-	return InputInterface->GetUserAction(); 	
+	return InputInterface->GetUserAction();
 }
 ////////////////////////////////////////////////////////////////////
 
 void ApplicationManager::ExecuteAction(ActionType ActType)
 {
-	Action* pAct = NULL;
+	Action* pAct = nullptr;
+
 	switch (ActType)
 	{
-		case ADD_AND_GATE_2:
-			pAct= new AddANDgate2(this);	
-			break;
+	case ADD_AND_GATE_2:
+		pAct = new AddANDgate2(this);
+		break;
 
-		case ADD_CONNECTION:
-			//TODO: Create AddConection Action here
-			break;
-	
+	case ADD_CONNECTION:
+		break;
 
-		case EXIT:
-			///TODO: create ExitAction here
-			break;
+	case EXIT:
+		break;
 	}
-	if(pAct)
+
+	if (pAct)
 	{
 		pAct->Execute();
 		delete pAct;
-		pAct = NULL;
 	}
 }
 ////////////////////////////////////////////////////////////////////
 
 void ApplicationManager::UpdateInterface()
 {
-		for(int i=0; i<CompCount; i++)
-			CompList[i]->Draw(OutputInterface);
-
+	for (int i = 0; i < CompCount; i++)
+		CompList[i]->Draw(OutputInterface);
 }
-
 ////////////////////////////////////////////////////////////////////
-Input* ApplicationManager::GetInput()
+
+void ApplicationManager::RemoveComponent(Component* pComp)
 {
-	return InputInterface;
+	for (int i = 0; i < CompCount; i++)
+	{
+		if (CompList[i] == pComp)
+		{
+			// shift components left
+			for (int j = i; j < CompCount - 1; j++)
+			{
+				CompList[j] = CompList[j + 1];
+			}
+
+			CompList[CompCount - 1] = nullptr;
+			CompCount--;
+			return;
+		}
+	}
 }
 
-////////////////////////////////////////////////////////////////////
+
 Output* ApplicationManager::GetOutput()
 {
 	return OutputInterface;
 }
 
+Input* ApplicationManager::GetInput()
+{
+	return InputInterface;
+}
+////////////////////////////////////////////////////////////////////
+
+void ApplicationManager::AddComponent(Component* pComp)
+{
+	if (CompCount < MaxCompCount)
+	{
+		CompList[CompCount++] = pComp;
+	}
+}
+////////////////////////////////////////////////////////////////////
+// ================= CLIPBOARD =================
+
+void ApplicationManager::SetClipboard(Component* pComp, bool IsCut)
+{
+	Clipboard = pComp;
+	IsClip_Cut = IsCut;
+}
+
+Component* ApplicationManager::GetClipboard() const
+{
+	return Clipboard;
+}
+
+bool ApplicationManager::GetIsCut() const
+{
+	return IsClip_Cut;
+}
+
+void ApplicationManager::Uncut()
+{
+	Clipboard = nullptr;
+	IsClip_Cut = false;
+}
+
+void ApplicationManager::ClearClipboard()
+{
+	Clipboard = nullptr;
+	IsClip_Cut = false;
+}
 ////////////////////////////////////////////////////////////////////
 
 ApplicationManager::~ApplicationManager()
 {
-	for(int i=0; i<CompCount; i++)
+	for (int i = 0; i < CompCount; i++)
 		delete CompList[i];
+
 	delete OutputInterface;
 	delete InputInterface;
-	
 }

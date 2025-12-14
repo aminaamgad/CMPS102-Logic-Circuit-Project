@@ -23,6 +23,7 @@ public:
 	
 	// Draws 2-input AND gate
 	void DrawAND2(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawAND3(GraphicsInfo r_GfxInfo, bool selected = false) const;
 
 	///TODO: Make similar functions for drawing all other gates, switch, and LED, .. etc
 
@@ -30,7 +31,7 @@ public:
 	void DrawConnection(GraphicsInfo r_GfxInfo, bool selected = false) const;
 	
 	void PrintMsg(string msg) const;	//Print a message on Status bar
-
+	void DrawXOR2(GraphicsInfo r_GfxInfo, bool selected = false) const;
 
 	~Output();
 };

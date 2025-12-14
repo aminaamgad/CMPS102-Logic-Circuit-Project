@@ -62,6 +62,9 @@ void Output::PrintMsg(string msg) const
 	pWind->SetPen(UI.MsgColor); 
 	pWind->DrawString(MsgX, UI.height - MsgY, msg);
 }
+void Output::DrawXOR2(GraphicsInfo r_GfxInfo, bool selected) const
+{
+}
 //////////////////////////////////////////////////////////////////////////////////
 void Output::ClearStatusBar()const
 {
